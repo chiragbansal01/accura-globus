@@ -1,0 +1,99 @@
+
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Users, Globe, Check } from "lucide-react";
+
+const About = () => {
+  return (
+    <section id="about" className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">About AccuraGlobal</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Led by experienced professionals who blend U.S. accounting expertise with Indian cost-efficiency.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <Card className="p-8 hover:shadow-lg transition-shadow">
+              <CardContent className="p-0">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Users className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">Bhuvesh Aggarwal</h3>
+                    <Badge className="mb-3 bg-blue-100 text-blue-700">Founder, CA | CPA pursuing</Badge>
+                    <p className="text-gray-600 mb-4">
+                      3+ years post-qualification in accounting and tax. Ex-BDO India (Indirect Tax), 
+                      led financial-process improvements and compliance for diverse clients in real estate, 
+                      healthcare, and manufacturing.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline">Chartered Accountant</Badge>
+                      <Badge variant="outline">Big Four Experience</Badge>
+                      <Badge variant="outline">QuickBooks ProAdvisor</Badge>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="p-8 hover:shadow-lg transition-shadow">
+              <CardContent className="p-0">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Globe className="w-6 h-6 text-teal-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">Krishna</h3>
+                    <Badge className="mb-3 bg-teal-100 text-teal-700">Co-Founder, MBA | EA pursuing</Badge>
+                    <p className="text-gray-600 mb-4">
+                      2 years U.S. tax professional, ex-PwC. Skilled in individual (1040) and business tax returns 
+                      (1065, 1120C/S) and serving high-net-worth clients. Currently at HBK Offshore.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline">U.S. Tax Expert</Badge>
+                      <Badge variant="outline">PwC Alumni</Badge>
+                      <Badge variant="outline">HNWI Specialist</Badge>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="bg-gray-50 rounded-lg p-8">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center">Security & Compliance</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Check className="w-6 h-6 text-green-600" />
+                </div>
+                <h4 className="font-semibold mb-2">SOC 2 Compliant</h4>
+                <p className="text-gray-600 text-sm">Enterprise-grade security standards</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Check className="w-6 h-6 text-green-600" />
+                </div>
+                <h4 className="font-semibold mb-2">GDPR Compliance</h4>
+                <p className="text-gray-600 text-sm">Data protection and privacy</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Check className="w-6 h-6 text-green-600" />
+                </div>
+                <h4 className="font-semibold mb-2">Encrypted Systems</h4>
+                <p className="text-gray-600 text-sm">Two-factor authentication & role-based access</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
