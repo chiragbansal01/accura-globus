@@ -24,7 +24,7 @@ const Contact = () => {
               <CardContent className="p-0 space-y-6">
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Email</h4>
-                  <p className="text-gray-600">contact@accuraglobal.com</p>
+                  <p className="text-gray-600">contact@accuraglobus.com</p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Office Location</h4>
@@ -33,14 +33,8 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Business Hours</h4>
                   <p className="text-gray-600">
-                    Monday - Friday: 9:00 AM - 6:00 PM IST<br/>
-                    (Perfect overlap with U.S. business hours)
+                    Monday - Friday: 12:00 PM - 9:00 PM IST
                   </p>
-                </div>
-                <div className="pt-4">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full">
-                    Schedule a Discovery Call
-                  </Button>
                 </div>
               </CardContent>
             </Card>

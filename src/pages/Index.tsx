@@ -6,6 +6,7 @@ import WhyOutsource from "@/components/WhyOutsource";
 import Services from "@/components/Services";
 import ClientProfiles from "@/components/ClientProfiles";
 import Technology from "@/components/Technology";
+import Blogs from "@/components/Blogs";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -19,6 +20,7 @@ const Index = () => {
       <Services />
       <ClientProfiles />
       <Technology />
+      <Blogs />
       <Contact />
       <Footer />
     </div>

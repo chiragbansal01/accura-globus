@@ -12,7 +12,7 @@ const Footer = () => {
                 <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
                   <Globe className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold">AccuraGlobal</span>
+                <span className="text-xl font-bold">AccuraGlobus</span>
               </div>
               <p className="text-gray-400 mb-4">
                 Precision. Compliance. Growth.
@@ -36,7 +36,7 @@ const Footer = () => {
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#team" className="hover:text-white transition-colors">Our Team</a></li>
+                <li><a href="#blogs" className="hover:text-white transition-colors">Blogs</a></li>
                 <li><a href="#why-us" className="hover:text-white transition-colors">Why Choose Us</a></li>
                 <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
               </ul>
@@ -56,7 +56,7 @@ const Footer = () => {
           <div className="border-t border-gray-800 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-gray-400 text-sm mb-4 md:mb-0">
-                © 2024 AccuraGlobal. All rights reserved. | accuraglobal.com
+                © 2024 AccuraGlobus. All rights reserved. | accuraglobus.com
               </p>
               <div className="flex space-x-4">
                 <div className="text-xs text-gray-500">
