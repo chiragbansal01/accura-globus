@@ -1,6 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import ServiceDialog from "./ServiceDialog";
 
 const Services = () => {
   const usServices = [
@@ -116,24 +117,26 @@ const Services = () => {
             <h3 className="text-3xl font-semibold text-gray-900 mb-8 text-center">U.S. CPA Services</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {usServices.map((service, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-3xl">{service.logo}</span>
-                      <CardTitle className="text-xl text-blue-600">{service.title}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 mb-4">{service.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {service.features.map((feature, idx) => (
-                        <Badge key={idx} variant="outline" className="text-xs">
-                          {feature}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+                <ServiceDialog key={index} service={service}>
+                  <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer group hover:-translate-y-1 border-2 border-transparent hover:border-blue-200">
+                    <CardHeader>
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="text-3xl group-hover:scale-110 transition-transform">{service.logo}</span>
+                        <CardTitle className="text-xl text-blue-600 group-hover:text-blue-700 transition-colors">{service.title}</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-4">{service.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {service.features.map((feature, idx) => (
+                          <Badge key={idx} variant="outline" className="text-xs">
+                            {feature}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </ServiceDialog>
               ))}
             </div>
           </div>
@@ -143,24 +146,26 @@ const Services = () => {
             <h3 className="text-3xl font-semibold text-gray-900 mb-8 text-center">Indian Services</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {indianServices.map((service, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-3xl">{service.logo}</span>
-                      <CardTitle className="text-xl text-teal-600">{service.title}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 mb-4">{service.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {service.features.map((feature, idx) => (
-                        <Badge key={idx} variant="outline" className="text-xs">
-                          {feature}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+                <ServiceDialog key={index} service={service}>
+                  <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer group hover:-translate-y-1 border-2 border-transparent hover:border-teal-200">
+                    <CardHeader>
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="text-3xl group-hover:scale-110 transition-transform">{service.logo}</span>
+                        <CardTitle className="text-xl text-teal-600 group-hover:text-teal-700 transition-colors">{service.title}</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-4">{service.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {service.features.map((feature, idx) => (
+                          <Badge key={idx} variant="outline" className="text-xs">
+                            {feature}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </ServiceDialog>
               ))}
             </div>
           </div>

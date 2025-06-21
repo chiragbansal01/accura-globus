@@ -1,11 +1,13 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, BookOpen } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Blogs = () => {
+  const navigate = useNavigate();
+
   const handleBlogClick = () => {
-    // This will be implemented when you create a dedicated blog page
-    console.log("Navigating to blogs page");
+    navigate("/blogs");
   };
 
   return (
