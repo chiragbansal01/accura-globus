@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
@@ -39,16 +39,6 @@ const Footer = () => {
                 <li><a href="#blogs" className="hover:text-white transition-colors">Blogs</a></li>
                 <li><a href="#why-us" className="hover:text-white transition-colors">Why Choose Us</a></li>
                 <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Data Security</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Compliance</a></li>
               </ul>
             </div>
           </div>

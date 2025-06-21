@@ -70,12 +70,12 @@ const Services = () => {
   ];
 
   const techLogos = [
-    { name: "QuickBooks", icon: "💻" },
-    { name: "Xero", icon: "🔷" },
-    { name: "Zoho", icon: "🟡" },
-    { name: "CCH Axcess", icon: "📱" },
-    { name: "SurePrep", icon: "📊" },
-    { name: "ProSystem fx", icon: "⚡" }
+    { name: "QuickBooks", logo: "https://logo.clearbit.com/quickbooks.intuit.com" },
+    { name: "Xero", logo: "https://logo.clearbit.com/xero.com" },
+    { name: "Zoho", logo: "https://logo.clearbit.com/zoho.com" },
+    { name: "CCH Axcess", logo: "https://via.placeholder.com/60x40/0066cc/ffffff?text=CCH" },
+    { name: "SurePrep", logo: "https://via.placeholder.com/60x40/ff6600/ffffff?text=SP" },
+    { name: "ProSystem fx", logo: "https://via.placeholder.com/60x40/009900/ffffff?text=PS" }
   ];
 
   return (
@@ -95,7 +95,16 @@ const Services = () => {
             <div className="grid grid-cols-3 md:grid-cols-6 gap-6 items-center">
               {techLogos.map((tech, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-4xl mb-2">{tech.icon}</div>
+                  <div className="mb-2 flex justify-center">
+                    <img 
+                      src={tech.logo} 
+                      alt={tech.name}
+                      className="h-10 object-contain"
+                      onError={(e) => {
+                        e.currentTarget.src = `https://via.placeholder.com/60x40/0066cc/ffffff?text=${tech.name.substring(0, 2)}`;
+                      }}
+                    />
+                  </div>
                   <p className="text-sm text-gray-600 font-medium">{tech.name}</p>
                 </div>
               ))}

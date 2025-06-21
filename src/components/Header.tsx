@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Globe } from "lucide-react";
+import MeetingDialog from "./MeetingDialog";
 
 const Header = () => {
   return (
@@ -21,9 +22,11 @@ const Header = () => {
           <a href="#contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
         </nav>
 
-        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-          Schedule a Meet
-        </Button>
+        <MeetingDialog>
+          <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+            Schedule a Meet
+          </Button>
+        </MeetingDialog>
       </div>
     </header>
   );
