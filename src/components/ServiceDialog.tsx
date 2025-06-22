@@ -55,7 +55,7 @@ const ServiceDialog = ({ children, service }: ServiceDialogProps) => {
             <p className="text-sm text-gray-600 mb-4">
               Ready to get started with {service.title.toLowerCase()}? Schedule a consultation with our experts.
             </p>
-            <MeetingDialog>
+            <MeetingDialog serviceType={service.title}>
               <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                 Schedule a Meet for {service.title}
               </Button>

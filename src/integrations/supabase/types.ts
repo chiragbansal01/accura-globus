@@ -9,7 +9,96 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      blogs: {
+        Row: {
+          author: string
+          category: string
+          content: string
+          created_at: string
+          excerpt: string
+          id: string
+          read_time: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author?: string
+          category: string
+          content: string
+          created_at?: string
+          excerpt: string
+          id?: string
+          read_time?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string
+          category?: string
+          content?: string
+          created_at?: string
+          excerpt?: string
+          id?: string
+          read_time?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      meeting_schedules: {
+        Row: {
+          concern: string
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          meeting_time: string
+          service_type: string | null
+          status: string
+        }
+        Insert: {
+          concern: string
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          meeting_time: string
+          service_type?: string | null
+          status?: string
+        }
+        Update: {
+          concern?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          meeting_time?: string
+          service_type?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
+      newsletter_subscriptions: {
+        Row: {
+          email: string
+          id: string
+          is_active: boolean
+          subscribed_at: string
+        }
+        Insert: {
+          email: string
+          id?: string
+          is_active?: boolean
+          subscribed_at?: string
+        }
+        Update: {
+          email?: string
+          id?: string
+          is_active?: boolean
+          subscribed_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
