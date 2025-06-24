@@ -2,6 +2,13 @@
 import { Globe } from "lucide-react";
 
 const Footer = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
@@ -25,20 +32,76 @@ const Footer = () => {
             <div>
               <h4 className="font-semibold mb-4">Services</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Tax Planning & Filing</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Audit & Assurance</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Bookkeeping</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Business Advisory</a></li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('services')} 
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    Tax Planning & Filing
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('services')} 
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    Audit & Assurance
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('services')} 
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    Bookkeeping
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('services')} 
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    Business Advisory
+                  </button>
+                </li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#blogs" className="hover:text-white transition-colors">Blogs</a></li>
-                <li><a href="#why-us" className="hover:text-white transition-colors">Why Choose Us</a></li>
-                <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('about')} 
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    About Us
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('blogs')} 
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    Blogs
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('why-us')} 
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    Why Choose Us
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('contact')} 
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    Contact
+                  </button>
+                </li>
               </ul>
             </div>
           </div>

@@ -28,7 +28,14 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Office Location</h4>
-                  <p className="text-gray-600">New Delhi, India</p>
+                  <a 
+                    href="https://g.co/kgs/LrFKtLa" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 transition-colors"
+                  >
+                    Dwarka, New Delhi, India
+                  </a>
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Business Hours</h4>

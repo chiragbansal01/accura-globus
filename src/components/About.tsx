@@ -20,8 +20,12 @@ const About = () => {
             <Card className="p-8 hover:shadow-lg transition-shadow">
               <CardContent className="p-0">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Users className="w-6 h-6 text-blue-600" />
+                  <div className="flex-shrink-0">
+                    <img 
+                      src="/lovable-uploads/3f541feb-b69d-4aef-b274-e5b25b491567.png" 
+                      alt="Bhuvesh Aggarwal"
+                      className="w-20 h-20 rounded-full object-cover"
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">Bhuvesh Aggarwal</h3>
@@ -53,8 +57,12 @@ const About = () => {
             <Card className="p-8 hover:shadow-lg transition-shadow">
               <CardContent className="p-0">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Globe className="w-6 h-6 text-teal-600" />
+                  <div className="flex-shrink-0">
+                    <img 
+                      src="/lovable-uploads/59ea6be3-181d-4b21-ac69-096ccbe1f236.png" 
+                      alt="Krishna Attal"
+                      className="w-20 h-20 rounded-full object-cover"
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">Krishna Attal</h3>
