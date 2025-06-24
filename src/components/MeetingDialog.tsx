@@ -37,6 +37,14 @@ const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
            formData.concern.trim() !== "";
   };
 
+  const convertToEST = (localDateTime: string) => {
+    const localDate = new Date(localDateTime);
+    // Convert to EST (UTC-5) or EDT (UTC-4) depending on DST
+    const estOffset = -5; // EST is UTC-5
+    const estDate = new Date(localDate.getTime() + (estOffset * 60 * 60 * 1000));
+    return estDate.toISOString();
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -52,13 +60,15 @@ const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
     setIsSubmitting(true);
 
     try {
+      const estMeetingTime = convertToEST(formData.meetingTime);
+      
       const { error } = await supabase
         .from('meeting_schedules')
         .insert([
           {
             full_name: formData.fullName,
             email: formData.email,
-            meeting_time: formData.meetingTime,
+            meeting_time: estMeetingTime,
             concern: formData.concern,
             service_type: serviceType || null,
             status: 'pending'
@@ -142,7 +152,7 @@ const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
           <div className="space-y-2">
             <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
               <Clock className="w-4 h-4" />
-              Preferred Meeting Time *
+              Preferred Meeting Time (EST) *
             </label>
             <Input
               type="datetime-local"
@@ -150,6 +160,9 @@ const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
               onChange={(e) => handleInputChange("meetingTime", e.target.value)}
               required
             />
+            <p className="text-xs text-gray-500">
+              Time will be converted to Eastern Standard Time (EST)
+            </p>
           </div>
           
           <div className="space-y-2">

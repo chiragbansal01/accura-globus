@@ -1,7 +1,8 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Users, Globe, Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Users, Globe, Check, Linkedin } from "lucide-react";
 
 const About = () => {
   return (
@@ -9,7 +10,7 @@ const About = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">About AccuraGlobal</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">About AccuraGlobus</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Led by experienced professionals who blend U.S. accounting expertise with Indian cost-efficiency.
             </p>
@@ -30,11 +31,20 @@ const About = () => {
                       led financial-process improvements and compliance for diverse clients in real estate, 
                       healthcare, and manufacturing.
                     </p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       <Badge variant="outline">Chartered Accountant</Badge>
                       <Badge variant="outline">Big Four Experience</Badge>
                       <Badge variant="outline">QuickBooks ProAdvisor</Badge>
                     </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center gap-2"
+                      onClick={() => window.open('https://linkedin.com/in/bhuveshaggarwal', '_blank')}
+                    >
+                      <Linkedin className="w-4 h-4" />
+                      LinkedIn
+                    </Button>
                   </div>
                 </div>
               </CardContent>
@@ -47,17 +57,26 @@ const About = () => {
                     <Globe className="w-6 h-6 text-teal-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">Krishna</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">Krishna Attal</h3>
                     <Badge className="mb-3 bg-teal-100 text-teal-700">Co-Founder, MBA | EA pursuing</Badge>
                     <p className="text-gray-600 mb-4">
                       2 years U.S. tax professional, ex-PwC. Skilled in individual (1040) and business tax returns 
                       (1065, 1120C/S) and serving high-net-worth clients. Currently at HBK Offshore.
                     </p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       <Badge variant="outline">U.S. Tax Expert</Badge>
                       <Badge variant="outline">PwC Alumni</Badge>
                       <Badge variant="outline">HNWI Specialist</Badge>
                     </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center gap-2"
+                      onClick={() => window.open('https://linkedin.com/in/krishna-attal-bb04b1157', '_blank')}
+                    >
+                      <Linkedin className="w-4 h-4" />
+                      LinkedIn
+                    </Button>
                   </div>
                 </div>
               </CardContent>
