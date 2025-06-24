@@ -45,6 +45,42 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_form_submissions: {
+        Row: {
+          company_name: string | null
+          created_at: string
+          email: string
+          firm_size: string | null
+          first_name: string
+          id: string
+          last_name: string
+          message: string
+          status: string
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string
+          email: string
+          firm_size?: string | null
+          first_name: string
+          id?: string
+          last_name: string
+          message: string
+          status?: string
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string
+          email?: string
+          firm_size?: string | null
+          first_name?: string
+          id?: string
+          last_name?: string
+          message?: string
+          status?: string
+        }
+        Relationships: []
+      }
       meeting_schedules: {
         Row: {
           concern: string
