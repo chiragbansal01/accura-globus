@@ -1,40 +1,38 @@
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import MeetingDialog from "./MeetingDialog";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsOpen(false);
-  };
-
-  const navItems = [
-    { name: "Home", id: "hero" },
-    { name: "About", id: "about" },
-    { name: "Services", id: "services" },
-    { name: "Technology", id: "technology" },
-    { name: "Testimonials", id: "testimonials" },
-    { name: "Contact", id: "contact" },
+  const navigation = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Technology", href: "#technology" },
+    { name: "Blogs", href: "/blogs" },
+    { name: "Contact", href: "#contact" },
   ];
 
+  const scrollToSection = (href: string) => {
+    if (href.startsWith("#")) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             <img 
               src="/lovable-uploads/3f541feb-b69d-4aef-b274-e5b25b491567.png" 
               alt="AccuraGlobus" 
@@ -44,52 +42,72 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
-              >
-                {item.name}
-              </button>
+          <nav className="hidden lg:flex items-center space-x-8">
+            {navigation.map((item) => (
+              item.href.startsWith("#") ? (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                >
+                  {item.name}
+                </button>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
-            <MeetingDialog>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                Schedule a Meet
-              </Button>
-            </MeetingDialog>
           </nav>
 
-          {/* Mobile Navigation */}
-          <div className="md:hidden">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent>
-                <div className="flex flex-col space-y-4 mt-8">
-                  {navItems.map((item) => (
-                    <button
-                      key={item.id}
-                      onClick={() => scrollToSection(item.id)}
-                      className="text-left text-gray-600 hover:text-blue-600 transition-colors font-medium py-2"
-                    >
-                      {item.name}
-                    </button>
-                  ))}
-                  <MeetingDialog>
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full mt-4">
-                      Schedule a Meet
-                    </Button>
-                  </MeetingDialog>
-                </div>
-              </SheetContent>
-            </Sheet>
+          {/* CTA Button */}
+          <div className="hidden lg:block">
+            <MeetingDialog />
           </div>
+
+          {/* Mobile menu button */}
+          <button
+            className="lg:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="lg:hidden py-4 border-t border-gray-200">
+            <nav className="flex flex-col space-y-4">
+              {navigation.map((item) => (
+                item.href.startsWith("#") ? (
+                  <button
+                    key={item.name}
+                    onClick={() => scrollToSection(item.href)}
+                    className="text-left text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                  >
+                    {item.name}
+                  </button>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                  >
+                    {item.name}
+                  </Link>
+                )
+              ))}
+              <div className="pt-4">
+                <MeetingDialog />
+              </div>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );

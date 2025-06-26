@@ -1,116 +1,86 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Star } from "lucide-react";
 
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      position: "Senior Tax Manager",
-      rating: 5,
-      testimonial: "AccuraGlobus has completely transformed our practice operations. Their precision in bookkeeping and tax preparation is unmatched, allowing us to focus entirely on expanding our client relationships and growing our business.",
-      location: "New York, USA"
+      name: "Sarah M.",
+      role: "CPA Firm Partner",
+      content: "AccuraGlobus has transformed our practice. Their attention to detail and compliance expertise is unmatched. We've reduced our operational costs by 40% while improving quality.",
+      rating: 5
     },
     {
-      name: "Michael Chen",
-      position: "Financial Director",
-      rating: 5,
-      testimonial: "The attention to detail and quality of work consistently exceeds our expectations. They've streamlined our entire workflow, significantly improving our turnaround times and client satisfaction rates.",
-      location: "California, USA"
+      name: "Michael R.",
+      role: "Finance Director",
+      content: "The team's Big Four experience really shows in their work quality. They understand complex accounting standards and deliver consistently accurate results.",
+      rating: 5
     },
     {
-      name: "Priya Sharma",
-      position: "Business Owner",
-      rating: 5,
-      testimonial: "Their expertise in handling both US and Indian compliance requirements has been absolutely invaluable for our international operations. The team is highly professional and incredibly reliable.",
-      location: "Mumbai, India"
+      name: "Jennifer L.",
+      role: "Small Business Owner",
+      content: "What impressed me most was their proactive approach. They don't just process numbers; they provide insights that help drive business decisions.",
+      rating: 5
     },
     {
-      name: "David Williams",
-      position: "Tax Advisory Specialist",
-      rating: 5,
-      testimonial: "AccuraGlobus delivers consistently high-quality work that we can depend on. Their technology integration and process automation have revolutionized our workflow efficiency and accuracy.",
-      location: "Texas, USA"
+      name: "David K.",
+      role: "CFO",
+      content: "The technology integration was seamless. Their secure platform and real-time reporting have greatly improved our financial visibility and control.",
+      rating: 5
     },
     {
-      name: "Lisa Thompson",
-      position: "Accounting Manager",
-      rating: 5,
-      testimonial: "The team's deep expertise in QuickBooks and Xero implementation helped us completely modernize our accounting processes. The results have exceeded all our expectations and saved us countless hours.",
-      location: "Florida, USA"
+      name: "Lisa T.",
+      role: "Accounting Manager",
+      content: "Professional, reliable, and cost-effective. AccuraGlobus has become an extension of our team. The communication is excellent and deadlines are always met.",
+      rating: 5
     },
     {
-      name: "Robert Martinez",
-      position: "CPA Practice Owner",
-      rating: 5,
-      testimonial: "Working with AccuraGlobus has been a game-changer for our firm. Their meticulous approach to compliance and tax preparation has enhanced our reputation and allowed us to take on more complex clients.",
-      location: "Arizona, USA"
+      name: "Robert H.",
+      role: "Tax Consultant",
+      content: "Their tax preparation and compliance services are top-notch. The team stays current with all regulatory changes and ensures our clients remain compliant.",
+      rating: 5
     },
     {
-      name: "Jennifer Lee",
-      position: "Financial Consultant",
-      rating: 5,
-      testimonial: "The level of professionalism and expertise they bring to every project is remarkable. They've helped us maintain perfect compliance records while reducing our operational costs significantly.",
-      location: "Washington, USA"
+      name: "Amanda P.",
+      role: "Controller",
+      content: "The financial reporting accuracy and timeliness has exceeded our expectations. Their monthly close process is efficient and error-free.",
+      rating: 5
     },
     {
-      name: "Amanda Davis",
-      position: "Audit Supervisor",
-      rating: 5,
-      testimonial: "Their comprehensive understanding of both accounting standards and technology solutions has made them an invaluable partner. The quality and timeliness of their deliverables are consistently outstanding.",
-      location: "Oregon, USA"
+      name: "Thomas B.",
+      role: "Managing Partner",
+      content: "Working with AccuraGlobus has allowed us to focus on growing our client base while they handle the heavy lifting on accounting operations. Highly recommended!",
+      rating: 5
     }
   ];
 
-  const renderStars = (rating: number) => {
-    return Array.from({ length: rating }, (_, i) => (
-      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-    ));
-  };
-
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">What Our Clients Say</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Trusted by accounting professionals and businesses worldwide for exceptional financial services and unwavering compliance excellence.
-            </p>
-          </div>
-
-          <Carousel className="w-full max-w-5xl mx-auto">
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="h-full hover:shadow-lg transition-shadow">
-                    <CardContent className="p-6">
-                      <div className="flex items-center mb-4">
-                        {renderStars(testimonial.rating)}
-                      </div>
-                      <blockquote className="text-gray-700 mb-6 italic">
-                        "{testimonial.testimonial}"
-                      </blockquote>
-                      <div className="border-t pt-4">
-                        <div className="font-semibold text-gray-900">
-                          {testimonial.name}
-                        </div>
-                        <div className="text-sm text-blue-600 font-medium">
-                          {testimonial.position}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                          {testimonial.location}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex" />
-            <CarouselNext className="hidden md:flex" />
-          </Carousel>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Trusted by CPA firms and businesses across the United States
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <Card key={index} className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <CardContent className="p-6">
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-4 italic">"{testimonial.content}"</p>
+                <div className="border-t pt-4">
+                  <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                  <p className="text-sm text-gray-600">{testimonial.role}</p>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>

@@ -1,52 +1,39 @@
 
 import { useState } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Calendar, Clock, User, Mail, Globe } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import { CalendarIcon, Clock } from "lucide-react";
+import { format } from "date-fns";
 import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "@/components/ui/use-toast";
 
 interface MeetingDialogProps {
-  children: React.ReactNode;
   serviceType?: string;
 }
 
-const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
+const MeetingDialog = ({ serviceType }: MeetingDialogProps) => {
+  const [date, setDate] = useState<Date>();
+  const [time, setTime] = useState("");
+  const [timezone, setTimezone] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    meetingTime: "",
     concern: "",
-    timezone: "EST"
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const { toast } = useToast();
-
-  const validateForm = () => {
-    return formData.fullName.trim() !== "" && 
-           formData.email.trim() !== "" && 
-           formData.meetingTime.trim() !== "" && 
-           formData.concern.trim() !== "" &&
-           formData.timezone.trim() !== "";
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!validateForm()) {
+    if (!date || !time || !timezone) {
       toast({
-        title: "Incomplete Information",
-        description: "Please fill all the required details including timezone",
+        title: "Missing Information",
+        description: "Please select a date, time, and timezone for your meeting.",
         variant: "destructive",
       });
       return;
@@ -55,39 +42,36 @@ const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
     setIsSubmitting(true);
 
     try {
+      // Combine date and time
+      const [hours, minutes] = time.split(':');
+      const meetingDateTime = new Date(date);
+      meetingDateTime.setHours(parseInt(hours), parseInt(minutes));
+
       const { error } = await supabase
         .from('meeting_schedules')
-        .insert([
-          {
-            full_name: formData.fullName,
-            email: formData.email,
-            meeting_time: formData.meetingTime,
-            concern: formData.concern,
-            service_type: serviceType || null,
-            timezone: formData.timezone,
-            status: 'pending'
-          }
-        ]);
+        .insert({
+          full_name: formData.fullName,
+          email: formData.email,
+          concern: formData.concern,
+          service_type: serviceType,
+          meeting_time: meetingDateTime.toISOString(),
+          timezone: timezone,
+        });
 
-      if (error) {
-        console.error('Error submitting meeting:', error);
-        toast({
-          title: "Error",
-          description: "Failed to schedule meeting. Please try again.",
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Meeting Scheduled Successfully",
-          description: `Thank you for your trust, our team will reach you within 24 hours (${formData.timezone})`,
-        });
-        
-        // Reset form
-        setFormData({ fullName: "", email: "", meetingTime: "", concern: "", timezone: "EST" });
-        setIsOpen(false);
-      }
+      if (error) throw error;
+
+      toast({
+        title: "Meeting Scheduled!",
+        description: "We'll send you a confirmation email shortly.",
+      });
+
+      // Reset form
+      setFormData({ fullName: "", email: "", concern: "" });
+      setDate(undefined);
+      setTime("");
+      setTimezone("");
     } catch (error) {
-      console.error('Error submitting meeting:', error);
+      console.error('Error scheduling meeting:', error);
       toast({
         title: "Error",
         description: "Failed to schedule meeting. Please try again.",
@@ -98,57 +82,65 @@ const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
     }
   };
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
-
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog>
       <DialogTrigger asChild>
-        {children}
+        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+          <CalendarIcon className="w-4 h-4 mr-2" />
+          Schedule a Meeting
+        </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="text-xl text-gray-900 flex items-center gap-2">
-            <Calendar className="w-5 h-5 text-blue-600" />
-            Schedule a Meet
-            {serviceType && <span className="text-sm text-gray-600">for {serviceType}</span>}
-          </DialogTitle>
+          <DialogTitle>Schedule a Meeting</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-              <User className="w-4 h-4" />
-              Full Name *
-            </label>
+            <Label htmlFor="fullName">Full Name</Label>
             <Input
+              id="fullName"
               value={formData.fullName}
-              onChange={(e) => handleInputChange("fullName", e.target.value)}
-              placeholder="Enter your full name"
+              onChange={(e) => setFormData(prev => ({ ...prev, fullName: e.target.value }))}
               required
             />
           </div>
           
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-              <Mail className="w-4 h-4" />
-              Email Address *
-            </label>
+            <Label htmlFor="email">Email</Label>
             <Input
+              id="email"
               type="email"
               value={formData.email}
-              onChange={(e) => handleInputChange("email", e.target.value)}
-              placeholder="Enter your email"
+              onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
               required
             />
           </div>
-          
+
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-              <Globe className="w-4 h-4" />
-              Preferred Timezone *
-            </label>
-            <Select value={formData.timezone} onValueChange={(value) => handleInputChange("timezone", value)}>
+            <Label>Select Date</Label>
+            <Calendar
+              mode="single"
+              selected={date}
+              onSelect={setDate}
+              disabled={(date) => date < new Date()}
+              className="rounded-md border"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="time">Preferred Time</Label>
+            <Input
+              id="time"
+              type="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="timezone">Timezone</Label>
+            <Select value={timezone} onValueChange={setTimezone} required>
               <SelectTrigger>
                 <SelectValue placeholder="Select timezone" />
               </SelectTrigger>
@@ -158,41 +150,19 @@ const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
               </SelectContent>
             </Select>
           </div>
-          
+
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-              <Clock className="w-4 h-4" />
-              Preferred Meeting Time *
-            </label>
-            <Input
-              type="datetime-local"
-              value={formData.meetingTime}
-              onChange={(e) => handleInputChange("meetingTime", e.target.value)}
-              required
-            />
-            <p className="text-xs text-gray-500">
-              Time will be scheduled according to your selected timezone ({formData.timezone})
-            </p>
-          </div>
-          
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700">
-              Concern/Topic *
-            </label>
+            <Label htmlFor="concern">What would you like to discuss?</Label>
             <Textarea
+              id="concern"
               value={formData.concern}
-              onChange={(e) => handleInputChange("concern", e.target.value)}
-              placeholder="Please describe your accounting needs or concerns..."
-              rows={3}
+              onChange={(e) => setFormData(prev => ({ ...prev, concern: e.target.value }))}
+              placeholder="Please describe your accounting needs or questions..."
               required
             />
           </div>
-          
-          <Button 
-            type="submit" 
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-            disabled={isSubmitting}
-          >
+
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
             {isSubmitting ? "Scheduling..." : "Schedule Meeting"}
           </Button>
         </form>

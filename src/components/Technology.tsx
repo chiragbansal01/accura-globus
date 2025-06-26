@@ -1,88 +1,119 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 const Technology = () => {
-  const tools = [
+  const technologies = [
     {
-      category: "Accounting and Auditing Softwares",
-      items: [
-        { name: "QuickBooks Online", logo: "https://logos-world.net/wp-content/uploads/2021/03/QuickBooks-Logo.png" },
-        { name: "Xero", logo: "https://logos-world.net/wp-content/uploads/2021/03/Xero-Logo.png" },
-        { name: "Zoho Books", logo: "https://logos-world.net/wp-content/uploads/2020/12/Zoho-Logo.png" },
-        { name: "CCH Axcess", logo: "https://www.cchaxcess.com/content/dam/cch/logos/cch-axcess-logo.png" },
-        { name: "SurePrep", logo: "https://www.sureprep.com/content/dam/sureprep/logos/sureprep-logo-color.png" },
-        { name: "ProSystem fx", logo: "https://www.cch.com/content/dam/cch/navigation/prosystem-fx-logo.png" }
-      ]
+      name: "QuickBooks",
+      logo: "https://logos-world.net/wp-content/uploads/2021/03/QuickBooks-Logo.png",
+      description: "Complete accounting and bookkeeping solutions"
     },
     {
-      category: "Security & Compliance", 
-      items: [
-        { name: "SOC 2 Framework", logo: "https://www.aicpa.org/content/dam/aicpa/interestareas/frc/assuranceadvisoryservices/images/soc-logo.png" },
-        { name: "ISO 27001", logo: "https://www.iso.org/files/live/sites/isoorg/files/store/en/PUB100406.jpg" },
-        { name: "GDPR Compliance", logo: "https://gdpr.eu/wp-content/uploads/sites/2/2018/04/gdpr-logo.png" },
-        { name: "Multi-factor Authentication", logo: "https://www.microsoft.com/en-us/security/content-library/images/azure-mfa-logo.png" },
-        { name: "Role-based Access", logo: "https://img.icons8.com/color/96/security-lock.png" }
-      ]
+      name: "Xero",
+      logo: "https://logos-world.net/wp-content/uploads/2021/04/Xero-Logo.png",
+      description: "Cloud-based accounting software"
     },
     {
-      category: "Collaboration Tools",
-      items: [
-        { name: "Secure Cloud Services", logo: "https://logos-world.net/wp-content/uploads/2021/08/Amazon-Web-Services-AWS-Logo.png" },
-        { name: "Encrypted Data Transfer", logo: "https://img.icons8.com/color/96/ssl-security.png" },
-        { name: "Real-time Collaboration", logo: "https://logos-world.net/wp-content/uploads/2020/12/Slack-Logo.png" },
-        { name: "Document Management", logo: "https://logos-world.net/wp-content/uploads/2020/11/Dropbox-Logo.png" }
-      ]
+      name: "Sage",
+      logo: "https://logos-world.net/wp-content/uploads/2020/12/Sage-Logo.png",
+      description: "Business management solutions"
+    },
+    {
+      name: "Microsoft Excel",
+      logo: "https://logos-world.net/wp-content/uploads/2020/12/Microsoft-Excel-Logo.png",
+      description: "Advanced financial modeling and analysis"
+    },
+    {
+      name: "SAP",
+      logo: "https://logos-world.net/wp-content/uploads/2020/09/SAP-Logo.png",
+      description: "Enterprise resource planning"
+    },
+    {
+      name: "Oracle",
+      logo: "https://logos-world.net/wp-content/uploads/2020/09/Oracle-Logo.png",
+      description: "Database and financial applications"
+    }
+  ];
+
+  const securityFeatures = [
+    {
+      icon: "🔒",
+      title: "256-bit SSL Encryption",
+      description: "Bank-level security for all data transmissions"
+    },
+    {
+      icon: "🛡️",
+      title: "SOC 2 Type II Compliance",
+      description: "Audited security controls and procedures"
+    },
+    {
+      icon: "📊",
+      title: "Real-time Monitoring",
+      description: "24/7 security monitoring and threat detection"
+    },
+    {
+      icon: "🔐",
+      title: "Multi-factor Authentication",
+      description: "Enhanced access control and user verification"
+    },
+    {
+      icon: "💾",
+      title: "Secure Data Backup",
+      description: "Regular encrypted backups with disaster recovery"
+    },
+    {
+      icon: "📋",
+      title: "GDPR Compliant",
+      description: "Full compliance with data protection regulations"
     }
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Technology & Security</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Leading finance tools combined with enterprise-grade security for complete peace of mind.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {tools.map((tool, index) => (
-              <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
-                <CardContent className="p-0">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">{tool.category}</h3>
-                  <div className="space-y-3">
-                    {tool.items.map((item, idx) => (
-                      <div key={idx} className="flex items-center gap-3">
-                        <div className="w-10 h-10 flex items-center justify-center bg-gray-50 rounded p-1">
-                          <img 
-                            src={item.logo} 
-                            alt={item.name}
-                            className="w-full h-full object-contain"
-                            onError={(e) => {
-                              e.currentTarget.src = `https://ui-avatars.com/api/?name=${item.name}&background=0066cc&color=ffffff&size=40`;
-                            }}
-                          />
-                        </div>
-                        <Badge variant="outline" className="flex-1">
-                          {item.name}
-                        </Badge>
-                      </div>
-                    ))}
+        {/* Technology Stack */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Technology We Master</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-12">
+            We work with industry-leading accounting software and platforms to deliver seamless integration with your existing systems.
+          </p>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+            {technologies.map((tech, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-2 border-gray-100">
+                <CardContent className="p-6 text-center">
+                  <div className="mb-4 flex justify-center">
+                    <img 
+                      src={tech.logo} 
+                      alt={tech.name}
+                      className="h-12 w-auto object-contain"
+                    />
                   </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">{tech.name}</h3>
+                  <p className="text-sm text-gray-600">{tech.description}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
+        </div>
 
-          <div className="bg-blue-50 rounded-lg p-8">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4 text-center">Data Security Promise</h3>
-            <p className="text-gray-700 text-center max-w-4xl mx-auto text-lg">
-              Your financial information is as safe with us as in your own firm's vault. All client data is encrypted 
-              at rest and in transit, with multi-factor authentication, strict role-based access controls, and regular backups 
-              to ensure business continuity.
-            </p>
+        {/* Security Features */}
+        <div className="text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Security & Compliance</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-12">
+            Your data security is our top priority. We maintain the highest standards of protection and compliance.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {securityFeatures.map((feature, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow duration-300 bg-blue-50 border-blue-200">
+                <CardContent className="p-6 text-center">
+                  <div className="text-4xl mb-4">{feature.icon}</div>
+                  <h3 className="font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </div>
