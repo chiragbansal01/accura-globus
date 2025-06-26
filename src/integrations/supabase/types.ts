@@ -91,6 +91,7 @@ export type Database = {
           meeting_time: string
           service_type: string | null
           status: string
+          timezone: string
         }
         Insert: {
           concern: string
@@ -101,6 +102,7 @@ export type Database = {
           meeting_time: string
           service_type?: string | null
           status?: string
+          timezone?: string
         }
         Update: {
           concern?: string
@@ -111,6 +113,7 @@ export type Database = {
           meeting_time?: string
           service_type?: string | null
           status?: string
+          timezone?: string
         }
         Relationships: []
       }

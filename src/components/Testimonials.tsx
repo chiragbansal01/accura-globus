@@ -7,38 +7,59 @@ const Testimonials = () => {
   const testimonials = [
     {
       name: "Sarah Johnson",
-      company: "Johnson & Associates CPA",
+      position: "Senior Tax Manager",
       rating: 5,
-      testimonial: "AccuraGlobus has transformed our practice. Their team handles our bookkeeping and tax prep with incredible precision, allowing us to focus on growing our client base.",
+      testimonial: "AccuraGlobus has completely transformed our practice operations. Their precision in bookkeeping and tax preparation is unmatched, allowing us to focus entirely on expanding our client relationships and growing our business.",
       location: "New York, USA"
     },
     {
       name: "Michael Chen",
-      company: "Chen Financial Services",
+      position: "Financial Director",
       rating: 5,
-      testimonial: "The quality of work and attention to detail is outstanding. They've helped us streamline our operations and improve our turnaround times significantly.",
+      testimonial: "The attention to detail and quality of work consistently exceeds our expectations. They've streamlined our entire workflow, significantly improving our turnaround times and client satisfaction rates.",
       location: "California, USA"
     },
     {
       name: "Priya Sharma",
-      company: "Sharma Enterprises",
+      position: "Business Owner",
       rating: 5,
-      testimonial: "Their expertise in both US and Indian compliance has been invaluable for our cross-border operations. Highly professional and reliable team.",
+      testimonial: "Their expertise in handling both US and Indian compliance requirements has been absolutely invaluable for our international operations. The team is highly professional and incredibly reliable.",
       location: "Mumbai, India"
     },
     {
       name: "David Williams",
-      company: "Williams Tax Advisory",
+      position: "Tax Advisory Specialist",
       rating: 5,
-      testimonial: "AccuraGlobus delivers consistent, high-quality work. Their technology integration and process automation have made our workflow much more efficient.",
+      testimonial: "AccuraGlobus delivers consistently high-quality work that we can depend on. Their technology integration and process automation have revolutionized our workflow efficiency and accuracy.",
       location: "Texas, USA"
     },
     {
       name: "Lisa Thompson",
-      company: "Thompson & Partners",
+      position: "Accounting Manager",
       rating: 5,
-      testimonial: "The team's expertise in QuickBooks and Xero implementation helped us modernize our entire accounting process. Couldn't be happier with the results.",
+      testimonial: "The team's deep expertise in QuickBooks and Xero implementation helped us completely modernize our accounting processes. The results have exceeded all our expectations and saved us countless hours.",
       location: "Florida, USA"
+    },
+    {
+      name: "Robert Martinez",
+      position: "CPA Practice Owner",
+      rating: 5,
+      testimonial: "Working with AccuraGlobus has been a game-changer for our firm. Their meticulous approach to compliance and tax preparation has enhanced our reputation and allowed us to take on more complex clients.",
+      location: "Arizona, USA"
+    },
+    {
+      name: "Jennifer Lee",
+      position: "Financial Consultant",
+      rating: 5,
+      testimonial: "The level of professionalism and expertise they bring to every project is remarkable. They've helped us maintain perfect compliance records while reducing our operational costs significantly.",
+      location: "Washington, USA"
+    },
+    {
+      name: "Amanda Davis",
+      position: "Audit Supervisor",
+      rating: 5,
+      testimonial: "Their comprehensive understanding of both accounting standards and technology solutions has made them an invaluable partner. The quality and timeliness of their deliverables are consistently outstanding.",
+      location: "Oregon, USA"
     }
   ];
 
@@ -55,7 +76,7 @@ const Testimonials = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">What Our Clients Say</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Trusted by CPA firms and businesses worldwide for exceptional accounting and compliance services.
+              Trusted by accounting professionals and businesses worldwide for exceptional financial services and unwavering compliance excellence.
             </p>
           </div>
 
@@ -76,7 +97,7 @@ const Testimonials = () => {
                           {testimonial.name}
                         </div>
                         <div className="text-sm text-blue-600 font-medium">
-                          {testimonial.company}
+                          {testimonial.position}
                         </div>
                         <div className="text-sm text-gray-500">
                           {testimonial.location}

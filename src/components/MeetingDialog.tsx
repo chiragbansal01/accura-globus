@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import {
   Dialog,
   DialogContent,
@@ -10,7 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Calendar, Clock, User, Mail } from "lucide-react";
+import { Calendar, Clock, User, Mail, Globe } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -24,7 +25,8 @@ const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
     fullName: "",
     email: "",
     meetingTime: "",
-    concern: ""
+    concern: "",
+    timezone: "EST"
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -34,15 +36,8 @@ const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
     return formData.fullName.trim() !== "" && 
            formData.email.trim() !== "" && 
            formData.meetingTime.trim() !== "" && 
-           formData.concern.trim() !== "";
-  };
-
-  const convertToEST = (localDateTime: string) => {
-    const localDate = new Date(localDateTime);
-    // Convert to EST (UTC-5) or EDT (UTC-4) depending on DST
-    const estOffset = -5; // EST is UTC-5
-    const estDate = new Date(localDate.getTime() + (estOffset * 60 * 60 * 1000));
-    return estDate.toISOString();
+           formData.concern.trim() !== "" &&
+           formData.timezone.trim() !== "";
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -51,7 +46,7 @@ const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
     if (!validateForm()) {
       toast({
         title: "Incomplete Information",
-        description: "Please fill the necessary details",
+        description: "Please fill all the required details including timezone",
         variant: "destructive",
       });
       return;
@@ -60,17 +55,16 @@ const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
     setIsSubmitting(true);
 
     try {
-      const estMeetingTime = convertToEST(formData.meetingTime);
-      
       const { error } = await supabase
         .from('meeting_schedules')
         .insert([
           {
             full_name: formData.fullName,
             email: formData.email,
-            meeting_time: estMeetingTime,
+            meeting_time: formData.meetingTime,
             concern: formData.concern,
             service_type: serviceType || null,
+            timezone: formData.timezone,
             status: 'pending'
           }
         ]);
@@ -85,11 +79,11 @@ const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
       } else {
         toast({
           title: "Meeting Scheduled Successfully",
-          description: "Thank you for your trust, our team will reach you within 24 hours",
+          description: `Thank you for your trust, our team will reach you within 24 hours (${formData.timezone})`,
         });
         
         // Reset form
-        setFormData({ fullName: "", email: "", meetingTime: "", concern: "" });
+        setFormData({ fullName: "", email: "", meetingTime: "", concern: "", timezone: "EST" });
         setIsOpen(false);
       }
     } catch (error) {
@@ -151,8 +145,24 @@ const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
           
           <div className="space-y-2">
             <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+              <Globe className="w-4 h-4" />
+              Preferred Timezone *
+            </label>
+            <Select value={formData.timezone} onValueChange={(value) => handleInputChange("timezone", value)}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select timezone" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="EST">EST (Eastern Standard Time)</SelectItem>
+                <SelectItem value="IST">IST (India Standard Time)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
               <Clock className="w-4 h-4" />
-              Preferred Meeting Time (EST) *
+              Preferred Meeting Time *
             </label>
             <Input
               type="datetime-local"
@@ -161,7 +171,7 @@ const MeetingDialog = ({ children, serviceType }: MeetingDialogProps) => {
               required
             />
             <p className="text-xs text-gray-500">
-              Time will be converted to Eastern Standard Time (EST)
+              Time will be scheduled according to your selected timezone ({formData.timezone})
             </p>
           </div>
           
