@@ -5,33 +5,33 @@ import { Badge } from "@/components/ui/badge";
 const Technology = () => {
   const tools = [
     {
-      category: "Accounting Software",
+      category: "Accounting and Auditing Softwares",
       items: [
-        { name: "QuickBooks Online", logo: "https://logo.clearbit.com/quickbooks.intuit.com" },
-        { name: "Xero", logo: "https://logo.clearbit.com/xero.com" },
-        { name: "Zoho Books", logo: "https://logo.clearbit.com/zoho.com" },
-        { name: "CCH Axcess", logo: "https://via.placeholder.com/40x40/0066cc/ffffff?text=CCH" },
-        { name: "SurePrep", logo: "https://via.placeholder.com/40x40/ff6600/ffffff?text=SP" },
-        { name: "ProSystem fx", logo: "https://via.placeholder.com/40x40/009900/ffffff?text=PS" }
+        { name: "QuickBooks Online", logo: "https://cdn.worldvectorlogo.com/logos/quickbooks-1.svg" },
+        { name: "Xero", logo: "https://cdn.worldvectorlogo.com/logos/xero-logo.svg" },
+        { name: "Zoho Books", logo: "https://cdn.worldvectorlogo.com/logos/zoho.svg" },
+        { name: "CCH Axcess", logo: "https://www.cch.com/content/dam/cch/navigation/logo.svg" },
+        { name: "SurePrep", logo: "https://www.sureprep.com/content/dam/sureprep/logos/sureprep-logo.svg" },
+        { name: "ProSystem fx", logo: "https://cdn.worldvectorlogo.com/logos/prosystem-fx.svg" }
       ]
     },
     {
       category: "Security & Compliance", 
       items: [
-        { name: "SOC 2 Framework", logo: "https://via.placeholder.com/40x40/333333/ffffff?text=SOC2" },
-        { name: "ISO 27001", logo: "https://via.placeholder.com/40x40/0066cc/ffffff?text=ISO" },
-        { name: "GDPR Compliance", logo: "https://via.placeholder.com/40x40/0066ff/ffffff?text=GDPR" },
-        { name: "Multi-factor Authentication", logo: "https://via.placeholder.com/40x40/ff9900/ffffff?text=MFA" },
-        { name: "Role-based Access", logo: "https://via.placeholder.com/40x40/6600cc/ffffff?text=RBA" }
+        { name: "SOC 2 Framework", logo: "https://cdn.worldvectorlogo.com/logos/soc-2.svg" },
+        { name: "ISO 27001", logo: "https://cdn.worldvectorlogo.com/logos/iso-27001.svg" },
+        { name: "GDPR Compliance", logo: "https://cdn.worldvectorlogo.com/logos/gdpr.svg" },
+        { name: "Multi-factor Authentication", logo: "https://cdn.worldvectorlogo.com/logos/2fa.svg" },
+        { name: "Role-based Access", logo: "https://cdn.worldvectorlogo.com/logos/rbac.svg" }
       ]
     },
     {
       category: "Collaboration Tools",
       items: [
-        { name: "Secure Cloud Services", logo: "https://logo.clearbit.com/aws.amazon.com" },
-        { name: "Encrypted Data Transfer", logo: "https://via.placeholder.com/40x40/009900/ffffff?text=EDT" },
-        { name: "Real-time Collaboration", logo: "https://logo.clearbit.com/slack.com" },
-        { name: "Document Management", logo: "https://logo.clearbit.com/dropbox.com" }
+        { name: "Secure Cloud Services", logo: "https://cdn.worldvectorlogo.com/logos/aws-2.svg" },
+        { name: "Encrypted Data Transfer", logo: "https://cdn.worldvectorlogo.com/logos/ssl.svg" },
+        { name: "Real-time Collaboration", logo: "https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg" },
+        { name: "Document Management", logo: "https://cdn.worldvectorlogo.com/logos/dropbox-1.svg" }
       ]
     }
   ];
@@ -55,14 +55,16 @@ const Technology = () => {
                   <div className="space-y-3">
                     {tool.items.map((item, idx) => (
                       <div key={idx} className="flex items-center gap-3">
-                        <img 
-                          src={item.logo} 
-                          alt={item.name}
-                          className="w-8 h-8 object-contain"
-                          onError={(e) => {
-                            e.currentTarget.src = `https://via.placeholder.com/32x32/0066cc/ffffff?text=${item.name.substring(0, 2)}`;
-                          }}
-                        />
+                        <div className="w-8 h-8 flex items-center justify-center bg-gray-50 rounded">
+                          <img 
+                            src={item.logo} 
+                            alt={item.name}
+                            className="w-6 h-6 object-contain"
+                            onError={(e) => {
+                              e.currentTarget.src = `https://ui-avatars.com/api/?name=${item.name}&background=0066cc&color=ffffff&size=32`;
+                            }}
+                          />
+                        </div>
                         <Badge variant="outline" className="flex-1">
                           {item.name}
                         </Badge>

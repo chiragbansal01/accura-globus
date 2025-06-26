@@ -71,12 +71,12 @@ const Services = () => {
   ];
 
   const techLogos = [
-    { name: "QuickBooks", logo: "https://logo.clearbit.com/quickbooks.intuit.com" },
-    { name: "Xero", logo: "https://logo.clearbit.com/xero.com" },
-    { name: "Zoho", logo: "https://logo.clearbit.com/zoho.com" },
-    { name: "CCH Axcess", logo: "https://via.placeholder.com/60x40/0066cc/ffffff?text=CCH" },
-    { name: "SurePrep", logo: "https://via.placeholder.com/60x40/ff6600/ffffff?text=SP" },
-    { name: "ProSystem fx", logo: "https://via.placeholder.com/60x40/009900/ffffff?text=PS" }
+    { name: "QuickBooks", logo: "https://cdn.worldvectorlogo.com/logos/quickbooks-1.svg" },
+    { name: "Xero", logo: "https://cdn.worldvectorlogo.com/logos/xero-logo.svg" },
+    { name: "Zoho", logo: "https://cdn.worldvectorlogo.com/logos/zoho.svg" },
+    { name: "CCH Axcess", logo: "https://www.cch.com/content/dam/cch/navigation/logo.svg" },
+    { name: "SurePrep", logo: "https://www.sureprep.com/content/dam/sureprep/logos/sureprep-logo.svg" },
+    { name: "ProSystem fx", logo: "https://cdn.worldvectorlogo.com/logos/prosystem-fx.svg" }
   ];
 
   return (
@@ -97,14 +97,16 @@ const Services = () => {
               {techLogos.map((tech, index) => (
                 <div key={index} className="text-center">
                   <div className="mb-2 flex justify-center">
-                    <img 
-                      src={tech.logo} 
-                      alt={tech.name}
-                      className="h-10 object-contain"
-                      onError={(e) => {
-                        e.currentTarget.src = `https://via.placeholder.com/60x40/0066cc/ffffff?text=${tech.name.substring(0, 2)}`;
-                      }}
-                    />
+                    <div className="w-16 h-10 flex items-center justify-center bg-white rounded border">
+                      <img 
+                        src={tech.logo} 
+                        alt={tech.name}
+                        className="max-h-8 max-w-14 object-contain"
+                        onError={(e) => {
+                          e.currentTarget.src = `https://ui-avatars.com/api/?name=${tech.name}&background=0066cc&color=ffffff&size=60`;
+                        }}
+                      />
+                    </div>
                   </div>
                   <p className="text-sm text-gray-600 font-medium">{tech.name}</p>
                 </div>
