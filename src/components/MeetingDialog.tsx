@@ -7,16 +7,16 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calendar } from "@/components/ui/calendar";
-import { CalendarIcon, Clock } from "lucide-react";
-import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/use-toast";
 
 interface MeetingDialogProps {
   serviceType?: string;
+  children?: React.ReactNode;
 }
 
-const MeetingDialog = ({ serviceType }: MeetingDialogProps) => {
+const MeetingDialog = ({ serviceType, children }: MeetingDialogProps) => {
   const [date, setDate] = useState<Date>();
   const [time, setTime] = useState("");
   const [timezone, setTimezone] = useState("");
@@ -85,10 +85,12 @@ const MeetingDialog = ({ serviceType }: MeetingDialogProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-          <CalendarIcon className="w-4 h-4 mr-2" />
-          Schedule a Meeting
-        </Button>
+        {children || (
+          <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+            <CalendarIcon className="w-4 h-4 mr-2" />
+            Schedule a Meeting
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
