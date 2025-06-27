@@ -71,9 +71,9 @@ const Services = () => {
   ];
 
   const techLogos = [
-    { name: "QuickBooks", logo: "https://cdn.worldvectorlogo.com/logos/quickbooks-1.svg" },
-    { name: "Xero", logo: "https://cdn.worldvectorlogo.com/logos/xero-logo.svg" },
-    { name: "Zoho", logo: "https://cdn.worldvectorlogo.com/logos/zoho.svg" },
+    { name: "QuickBooks", logo: "https://logos-world.net/wp-content/uploads/2021/03/QuickBooks-Logo.png" },
+    { name: "Xero", logo: "https://logos-world.net/wp-content/uploads/2021/04/Xero-Logo.png" },
+    { name: "Zoho", logo: "https://logos-world.net/wp-content/uploads/2020/12/Zoho-Logo.png" },
     { name: "CCH Axcess", logo: "https://www.cch.com/content/dam/cch/navigation/logo.svg" },
     { name: "SurePrep", logo: "https://www.sureprep.com/content/dam/sureprep/logos/sureprep-logo.svg" },
     { name: "ProSystem fx", logo: "https://cdn.worldvectorlogo.com/logos/prosystem-fx.svg" }
@@ -119,26 +119,24 @@ const Services = () => {
             <h3 className="text-3xl font-semibold text-gray-900 mb-8 text-center">U.S. CPA Services</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {usServices.map((service, index) => (
-                <ServiceDialog key={index} service={service}>
-                  <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer group hover:-translate-y-1 border-2 border-transparent hover:border-blue-200">
-                    <CardHeader>
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="text-3xl group-hover:scale-110 transition-transform">{service.logo}</span>
-                        <CardTitle className="text-xl text-blue-600 group-hover:text-blue-700 transition-colors">{service.title}</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600 mb-4">{service.description}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {service.features.map((feature, idx) => (
-                          <Badge key={idx} variant="outline" className="text-xs">
-                            {feature}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </ServiceDialog>
+                <Card key={index} className="hover:shadow-lg transition-all duration-300 cursor-pointer group hover:-translate-y-1 border-2 border-transparent hover:border-blue-200">
+                  <CardHeader>
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-3xl group-hover:scale-110 transition-transform">{service.logo}</span>
+                      <CardTitle className="text-xl text-blue-600 group-hover:text-blue-700 transition-colors">{service.title}</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-4">{service.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {service.features.map((feature, idx) => (
+                        <Badge key={idx} variant="outline" className="text-xs">
+                          {feature}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
@@ -148,26 +146,24 @@ const Services = () => {
             <h3 className="text-3xl font-semibold text-gray-900 mb-8 text-center">Indian Services</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {indianServices.map((service, index) => (
-                <ServiceDialog key={index} service={service}>
-                  <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer group hover:-translate-y-1 border-2 border-transparent hover:border-teal-200">
-                    <CardHeader>
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="text-3xl group-hover:scale-110 transition-transform">{service.logo}</span>
-                        <CardTitle className="text-xl text-teal-600 group-hover:text-teal-700 transition-colors">{service.title}</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600 mb-4">{service.description}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {service.features.map((feature, idx) => (
-                          <Badge key={idx} variant="outline" className="text-xs">
-                            {feature}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </ServiceDialog>
+                <Card key={index} className="hover:shadow-lg transition-all duration-300 cursor-pointer group hover:-translate-y-1 border-2 border-transparent hover:border-teal-200">
+                  <CardHeader>
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-3xl group-hover:scale-110 transition-transform">{service.logo}</span>
+                      <CardTitle className="text-xl text-teal-600 group-hover:text-teal-700 transition-colors">{service.title}</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-4">{service.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {service.features.map((feature, idx) => (
+                        <Badge key={idx} variant="outline" className="text-xs">
+                          {feature}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
